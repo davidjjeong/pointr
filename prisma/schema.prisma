@@ -1,12 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -15,27 +8,38 @@ datasource db {
 }
 
 model UserSettings {
-  userId      String  @id
-  diningPlan  String
-  initAmount  Float
+  userId     String @id
+  diningPlan String
+  initAmount Float
+}
+
+model FoodOptions {
+  vendor String
+  food   String
+  amount Float
+  id     Int    @id @default(autoincrement())
+
+  @@unique([vendor, food])
 }
 
 model Expenditure {
-  id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
-  vendor      String
-  userId      String
-  amount      Float
-  food        String
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  date      String
+  vendor    String
+  userId    String
+  amount    Float
+  food      String
+  quantity  Int
 }
 
 model WeekHistory {
-  userId          String
-  week            Int
-  year            Int
-  totalExpense    Float   @default(0.0)
-  dailyBreakdown  Json?   // e.g. [12.3, 0, 5.5, ...]
+  userId         String
+  week           Int
+  year           Int
+  totalExpense   Float  @default(0.0)
+  dailyBreakdown Json?
 
   @@unique([userId, week, year])
   @@index([userId])

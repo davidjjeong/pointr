@@ -25,8 +25,7 @@ import {
 import { DiningPlan, DiningPlans } from "@/lib/diningplans"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import SkeletonWrapper from "./SkeletonWrapper"
-import { UserSettings } from "@/lib/generated/prisma/client"
-import { useEffect } from "react"
+import { UserSettings } from "@prisma/client";
 import { UpdateUserDiningPlan } from "@/app/wizard/_actions/userSettings"
 import { toast } from "sonner"
 

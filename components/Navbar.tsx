@@ -24,7 +24,7 @@ const items = [
 
 function DesktopNavbar() {
     return(
-        <aside className="hidden md:flex flex-col items-center w-20 md:w-64 h-screen fixed left-0 top-0 bg-background border-r border-border p-4 z-40">
+        <aside className="hidden md:flex flex-col items-center w-20 md:w-64 h-screen left-0 top-0 bg-background border-r border-border p-4">
             <nav className="h-full flex flex-col items-center justify-between py-2">
                 <div className="flex flex-col gap-y-6">
                     <Logo />
