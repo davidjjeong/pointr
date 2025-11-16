@@ -75,7 +75,7 @@ function CreateTransactionDialog({ trigger } : Props) {
         });
     }, [selectedVendor, selectedFood, selectedQuantity, grouped, form]);
 
-    //const queryClient = useQueryClient();
+    const queryClient = useQueryClient();
     const { mutate, isPending } = useMutation({
         mutationFn: createTransaction,
         onSuccess: () => {
@@ -91,9 +91,10 @@ function CreateTransactionDialog({ trigger } : Props) {
                 quantity: 1,
             })
 
-            /*queryClient.invalidateQueries({
-                queryKey: ["overview"],
-            });*/
+            queryClient.invalidateQueries({
+                queryKey: ["chart-overview"],
+                exact: false,
+            });
 
             setOpen((prev) => !prev);
         }

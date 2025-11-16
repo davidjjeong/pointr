@@ -34,6 +34,15 @@ model Expenditure {
   quantity  Int
 }
 
+model DayHistory {
+  userId        String
+  day           String
+  totalExpense  Float @default(0.0)
+
+  @@unique([userId, day])
+  @@index([userId])
+}
+
 model WeekHistory {
   userId         String
   week           Int

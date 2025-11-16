@@ -6,6 +6,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import React from 'react'
 import CreateTransactionDialog from './_components/CreateTransactionDialog';
+import { ExpenditureAreaChart } from './_components/ExpenditureAreaChart';
 
 async function page() {
   const user = await currentUser();
@@ -38,6 +39,9 @@ async function page() {
             + Expense
           </Button>
         } />
+      </div>
+      <div className="w-125 mt-5">
+        <ExpenditureAreaChart />
       </div>
     </div>
   )
